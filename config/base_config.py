@@ -20,8 +20,8 @@
 import random
 
 # 基础配置
-PLATFORM = "bili"  # 平台，xhs | dy | ks | bili | wb | tieba | zhihu
-KEYWORDS = "基因改造食物"  # 关键词搜索配置，以英文逗号分隔
+PLATFORM = "wb"  # 平台，xhs | dy | ks | bili | wb | tieba | zhihu
+KEYWORDS = "转基因"  # 关键词搜索配置，以英文逗号分隔
 LOGIN_TYPE = "phone"  # qrcode or phone or cookie
 COOKIES = ""
 CRAWLER_TYPE = (
@@ -79,13 +79,13 @@ SAVE_DATA_OPTION = "csv"  # csv or db or json or sqlite or excel
 USER_DATA_DIR = "%s_user_data_dir"  # %s will be replaced by platform name
 
 # 爬取开始页数 默认从第一页开始
-START_PAGE = 1
+START_PAGE = 22
 
 # 爬取视频/帖子的数量控制
 CRAWLER_MAX_NOTES_COUNT = 1000
 
 # 并发爬虫数量控制
-MAX_CONCURRENCY_NUM = 1
+MAX_CONCURRENCY_NUM = 3
 
 # 是否开启爬媒体模式（包含图片或视频资源），默认不开启爬媒体
 ENABLE_GET_MEIDAS = False

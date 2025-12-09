@@ -265,6 +265,8 @@ class WeiboCrawler(AbstractCrawler):
                 utils.logger.error(f"[WeiboCrawler.get_note_comments] get note_id: {note_id} comment error: {ex}")
             except Exception as e:
                 utils.logger.error(f"[WeiboCrawler.get_note_comments] may be been blocked, err:{e}")
+                await asyncio.sleep(180)
+                return None
 
     async def get_note_images(self, mblog: Dict):
         """
