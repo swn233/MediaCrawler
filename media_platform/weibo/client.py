@@ -73,7 +73,8 @@ class WeiboClient(ProxyRefreshMixin):
         await self._refresh_proxy_if_expired()
 
         enable_return_response = kwargs.pop("return_response", False)
-        async with httpx.AsyncClient(proxy=self.proxy) as client:
+        # follow_redirects=True 以处理微博 API 返回的 302（常见于 cookie 失效或重定向登录页）
+        async with httpx.AsyncClient(proxy=self.proxy, follow_redirects=True) as client:
             response = await client.request(method, url, timeout=self.timeout, **kwargs)
 
         if enable_return_response:

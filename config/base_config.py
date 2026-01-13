@@ -20,7 +20,7 @@
 import random
 
 # 基础配置
-PLATFORM = "wb"  # 平台，xhs | dy | ks | bili | wb | tieba | zhihu
+PLATFORM = "dy"  # 平台，xhs | dy | ks | bili | wb | tieba | zhihu
 KEYWORDS = "转基因"  # 关键词搜索配置，以英文逗号分隔
 LOGIN_TYPE = "phone"  # qrcode or phone or cookie
 COOKIES = ""
@@ -66,11 +66,11 @@ CUSTOM_BROWSER_PATH = ""
 CDP_HEADLESS = False
 
 # 浏览器启动超时时间（秒）
-BROWSER_LAUNCH_TIMEOUT = 60
+BROWSER_LAUNCH_TIMEOUT = 120
 
 # 是否在程序结束时自动关闭浏览器
 # 设置为False可以保持浏览器运行，便于调试
-AUTO_CLOSE_BROWSER = True
+AUTO_CLOSE_BROWSER = False
 
 # 数据保存类型选项配置,支持五种类型：csv、db、json、sqlite、excel, 最好保存到DB，有排重的功能。
 SAVE_DATA_OPTION = "csv"  # csv or db or json or sqlite or excel
@@ -79,10 +79,10 @@ SAVE_DATA_OPTION = "csv"  # csv or db or json or sqlite or excel
 USER_DATA_DIR = "%s_user_data_dir"  # %s will be replaced by platform name
 
 # 爬取开始页数 默认从第一页开始
-START_PAGE = 22
+START_PAGE = 1
 
 # 爬取视频/帖子的数量控制
-CRAWLER_MAX_NOTES_COUNT = 1000
+CRAWLER_MAX_NOTES_COUNT = 1500
 
 # 并发爬虫数量控制
 MAX_CONCURRENCY_NUM = 3
@@ -94,7 +94,7 @@ ENABLE_GET_MEIDAS = False
 ENABLE_GET_COMMENTS = True
 
 # 爬取一级评论的数量控制(单视频/帖子)
-CRAWLER_MAX_COMMENTS_COUNT_SINGLENOTES = 10000
+CRAWLER_MAX_COMMENTS_COUNT_SINGLENOTES = 20000
 
 # 是否开启爬二级评论模式, 默认不开启爬二级评论
 # 老版本项目使用了 db, 则需参考 schema/tables.sql line 287 增加表字段
