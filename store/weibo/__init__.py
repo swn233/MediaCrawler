@@ -35,6 +35,7 @@ class WeibostoreFactory:
     STORES = {
         "csv": WeiboCsvStoreImplement,
         "db": WeiboDbStoreImplement,
+        "postgres": WeiboDbStoreImplement,
         "json": WeiboJsonStoreImplement,
         "sqlite": WeiboSqliteStoreImplement,
         "mongodb": WeiboMongoStoreImplement,
@@ -188,7 +189,7 @@ async def save_creator(user_id: str, user_info: Dict):
     local_db_item = {
         'user_id': user_id,
         'nickname': user_info.get('screen_name'),
-        'gender': '女' if user_info.get('gender') == "f" else '男',
+        'gender': 'Female' if user_info.get('gender') == "f" else 'Male',
         'avatar': user_info.get('avatar_hd'),
         'desc': user_info.get('description'),
         'ip_location': user_info.get("source", "").replace("来自", ""),

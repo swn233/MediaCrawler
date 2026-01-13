@@ -21,7 +21,7 @@
 # -*- coding: utf-8 -*-
 # @Author  : persist1@126.com
 # @Time    : 2025/9/5 19:34
-# @Desc    : 知乎存储实现类
+# @Desc    : Zhihu storage implementation class
 import asyncio
 import csv
 import json
@@ -43,7 +43,7 @@ from tools.async_file_writer import AsyncFileWriter
 from database.mongodb_store_base import MongoDBStoreBase
 
 def calculate_number_of_files(file_store_path: str) -> int:
-    """计算数据保存文件的前部分排序数字，支持每次运行代码不写到同一个文件中
+    """Calculate the prefix sorting number for data save files, supporting writing to different files for each run
     Args:
         file_store_path;
     Returns:
@@ -110,7 +110,8 @@ class ZhihuDbStoreImplement(AbstractStore):
             existing_content = result.scalars().first()
             if existing_content:
                 for key, value in content_item.items():
-                    setattr(existing_content, key, value)
+                    if hasattr(existing_content, key):
+                        setattr(existing_content, key, value)
             else:
                 new_content = ZhihuContent(**content_item)
                 session.add(new_content)
@@ -129,7 +130,8 @@ class ZhihuDbStoreImplement(AbstractStore):
             existing_comment = result.scalars().first()
             if existing_comment:
                 for key, value in comment_item.items():
-                    setattr(existing_comment, key, value)
+                    if hasattr(existing_comment, key):
+                        setattr(existing_comment, key, value)
             else:
                 new_comment = ZhihuComment(**comment_item)
                 session.add(new_comment)
@@ -148,7 +150,8 @@ class ZhihuDbStoreImplement(AbstractStore):
             existing_creator = result.scalars().first()
             if existing_creator:
                 for key, value in creator.items():
-                    setattr(existing_creator, key, value)
+                    if hasattr(existing_creator, key):
+                        setattr(existing_creator, key, value)
             else:
                 new_creator = ZhihuCreator(**creator)
                 session.add(new_creator)
@@ -202,16 +205,16 @@ class ZhihuSqliteStoreImplement(ZhihuDbStoreImplement):
 
 
 class ZhihuMongoStoreImplement(AbstractStore):
-    """知乎MongoDB存储实现"""
+    """Zhihu MongoDB storage implementation"""
 
     def __init__(self):
         self.mongo_store = MongoDBStoreBase(collection_prefix="zhihu")
 
     async def store_content(self, content_item: Dict):
         """
-        存储内容到MongoDB
+        Store content to MongoDB
         Args:
-            content_item: 内容数据
+            content_item: Content data
         """
         note_id = content_item.get("note_id")
         if not note_id:
@@ -226,9 +229,9 @@ class ZhihuMongoStoreImplement(AbstractStore):
 
     async def store_comment(self, comment_item: Dict):
         """
-        存储评论到MongoDB
+        Store comment to MongoDB
         Args:
-            comment_item: 评论数据
+            comment_item: Comment data
         """
         comment_id = comment_item.get("comment_id")
         if not comment_id:
@@ -243,9 +246,9 @@ class ZhihuMongoStoreImplement(AbstractStore):
 
     async def store_creator(self, creator_item: Dict):
         """
-        存储创作者信息到MongoDB
+        Store creator information to MongoDB
         Args:
-            creator_item: 创作者数据
+            creator_item: Creator data
         """
         user_id = creator_item.get("user_id")
         if not user_id:
@@ -260,7 +263,7 @@ class ZhihuMongoStoreImplement(AbstractStore):
 
 
 class ZhihuExcelStoreImplement:
-    """知乎Excel存储实现 - 全局单例"""
+    """Zhihu Excel storage implementation - Global singleton"""
 
     def __new__(cls, *args, **kwargs):
         from store.excel_store_base import ExcelStoreBase

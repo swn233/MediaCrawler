@@ -793,6 +793,7 @@ dependencies = [
     { name = "aiosqlite" },
     { name = "alembic" },
     { name = "asyncmy" },
+    { name = "asyncpg" },
     { name = "cryptography" },
     { name = "fastapi" },
     { name = "httpx", extra = ["socks"] },
@@ -818,6 +819,7 @@ dependencies = [
     { name = "tenacity" },
     { name = "typer" },
     { name = "uvicorn" },
+    { name = "websockets" },
     { name = "wordcloud" },
 ]
 
@@ -828,6 +830,7 @@ requires-dist = [
     { name = "aiosqlite", specifier = ">=0.21.0" },
     { name = "alembic", specifier = ">=1.16.5" },
     { name = "asyncmy", specifier = ">=0.2.10" },
+    { name = "asyncpg", specifier = ">=0.31.0" },
     { name = "cryptography", specifier = ">=45.0.7" },
     { name = "fastapi", specifier = "==0.110.2" },
     { name = "httpx", extras = ["socks"], specifier = "==0.28.1" },
@@ -853,6 +856,7 @@ requires-dist = [
     { name = "tenacity", specifier = "==8.2.2" },
     { name = "typer", specifier = ">=0.12.3" },
     { name = "uvicorn", specifier = "==0.29.0" },
+    { name = "websockets", specifier = ">=15.0.1" },
     { name = "wordcloud", specifier = "==1.9.3" },
 ]
 
