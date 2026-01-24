@@ -5,7 +5,6 @@
 # Repository: https://github.com/NanmiCoder/MediaCrawler/blob/main/config/base_config.py
 # GitHub: https://github.com/NanmiCoder
 # Licensed under NON-COMMERCIAL LEARNING LICENSE 1.1
-#
 
 # 声明：本代码仅供学习和研究目的使用。使用者应遵守以下原则：
 # 1. 不得用于任何商业用途。
@@ -21,7 +20,7 @@ import random
 
 # 基础配置
 PLATFORM = "dy"  # 平台，xhs | dy | ks | bili | wb | tieba | zhihu
-KEYWORDS = "转基因"  # 关键词搜索配置，以英文逗号分隔
+KEYWORDS = "预制菜"  # 关键词搜索配置，以英文逗号分隔
 LOGIN_TYPE = "phone"  # qrcode or phone or cookie
 COOKIES = ""
 CRAWLER_TYPE = (
@@ -79,13 +78,13 @@ SAVE_DATA_OPTION = "csv"  # csv or db or json or sqlite or excel
 USER_DATA_DIR = "%s_user_data_dir"  # %s will be replaced by platform name
 
 # 爬取开始页数 默认从第一页开始
-START_PAGE = 1
+START_PAGE = 4
 
 # 爬取视频/帖子的数量控制
 CRAWLER_MAX_NOTES_COUNT = 1500
 
 # 并发爬虫数量控制
-MAX_CONCURRENCY_NUM = 3
+MAX_CONCURRENCY_NUM = 1
 
 # 是否开启爬媒体模式（包含图片或视频资源），默认不开启爬媒体
 ENABLE_GET_MEIDAS = False
